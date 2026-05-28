@@ -190,12 +190,10 @@
   .map-close:hover{background:#fff}
 
   /* form */
-  .form-card{background:rgba(16,16,28,.78);border:1px solid #2a2a40;border-radius:14px;padding:clamp(1.5rem,3vw,2.2rem);backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(0,0,0,.45)}
-  .form-card .form-title{font-family:var(--display);font-weight:700;font-size:1.15rem;letter-spacing:-.01em;margin-bottom:1.3rem;color:var(--ink)}
   form{display:flex;flex-direction:column;gap:1rem}
   .field label{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);display:block;margin-bottom:.5rem}
-  .field input,.field textarea{width:100%;background:rgba(255,255,255,.07);border:1px solid #33334d;border-radius:8px;padding:.85rem 1rem;color:var(--ink);font-family:var(--body);font-size:.95rem;transition:border-color .3s,background .3s,box-shadow .3s;resize:vertical}
-  .field input::placeholder,.field textarea::placeholder{color:#6f6c82}
+  .field input,.field textarea{width:100%;background:rgba(255,255,255,.06);border:1px solid #2b2b40;border-radius:6px;padding:.9rem 1rem;color:var(--ink);font-family:var(--body);font-size:.95rem;transition:border-color .3s,background .3s,box-shadow .3s;resize:vertical}
+  .field input::placeholder,.field textarea::placeholder{color:#6e6b80}
   .field input:focus,.field textarea:focus{outline:none;border-color:var(--amber);background:rgba(255,138,61,.06);box-shadow:0 0 0 3px rgba(255,138,61,.12)}
   .field textarea{min-height:120px}
   .send-btn{margin-top:.4rem;align-self:flex-start;display:inline-flex;align-items:center;gap:.7rem;font-family:var(--mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:#000;background:var(--amber);border:none;border-radius:99px;padding:.95rem 1.8rem;cursor:pointer;transition:background .3s,gap .3s,opacity .3s}
@@ -404,8 +402,6 @@
         </div>
       </div>
       <div class="reveal d2">
-        <div class="form-card">
-          <div class="form-title">Send a message</div>
           <form id="contactForm" onsubmit="return sendMail(event)">
             <div class="field"><label for="f-name">Your Name</label><input id="f-name" type="text" required placeholder="Jane Doe"></div>
             <div class="field"><label for="f-email">Your Email</label><input id="f-email" type="email" required placeholder="jane@company.com"></div>
@@ -414,7 +410,6 @@
             <button type="submit" class="send-btn" id="sendBtn">Send Message →</button>
             <div class="form-status" id="formStatus"></div>
           </form>
-        </div>
       </div>
     </div>
   </section>
