@@ -38,17 +38,23 @@
   section{position:relative;padding:7rem clamp(1.5rem,7vw,9rem)}
 
   /* nav + animated welcome label */
-  nav{position:fixed;top:0;left:0;width:100%;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:1.5rem clamp(1.5rem,7vw,9rem);mix-blend-mode:difference}
-  .brand{display:flex;align-items:center;gap:.55rem;font-family:var(--mono);font-size:.8rem;letter-spacing:.06em}
+  nav{position:fixed;top:0;left:0;width:100%;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:1.5rem clamp(1.5rem,7vw,9rem)}
+  .brand{display:flex;align-items:center;gap:.55rem;font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;mix-blend-mode:difference}
   .brand .spark{color:var(--amber)}
   .brand .txt{color:var(--ink)}
   .brand .caret{width:8px;height:15px;background:var(--amber);display:inline-block;animation:blink 1.05s steps(1) infinite}
   @keyframes blink{50%{opacity:0}}
-  .nav-links{display:flex;gap:2rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+  .nav-right{display:flex;align-items:center;gap:1.8rem}
+  .nav-links{display:flex;gap:2rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;mix-blend-mode:difference}
   .nav-links a{position:relative;opacity:.7;transition:opacity .3s}
   .nav-links a:hover{opacity:1}
   .nav-links a::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:1px;background:var(--amber);transition:width .35s}
   .nav-links a:hover::after{width:100%}
+  /* emphasised assistant button in nav */
+  .nav-assistant{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#000;background:var(--amber);padding:.6rem 1rem;border-radius:99px;font-weight:500;white-space:nowrap;box-shadow:0 0 0 0 rgba(255,138,61,.5);animation:pulseBtn 2.6s infinite;transition:transform .25s,background .3s}
+  .nav-assistant:hover{background:var(--ink);transform:translateY(-1px)}
+  .nav-assistant .ai-dot{width:7px;height:7px;border-radius:50%;background:#000;animation:pulse 1.6s infinite}
+  @keyframes pulseBtn{0%{box-shadow:0 0 0 0 rgba(255,138,61,.45)}70%{box-shadow:0 0 0 10px rgba(255,138,61,0)}100%{box-shadow:0 0 0 0 rgba(255,138,61,0)}}
   @media(max-width:880px){.nav-links{display:none}}
 
   /* hero — name sized to never overflow */
@@ -63,6 +69,13 @@
   .hero-role span{color:var(--amber)}
   .hero-sub{margin-top:1.8rem;max-width:42ch;font-size:clamp(1rem,1.6vw,1.2rem);line-height:1.65;color:var(--ink-dim);font-weight:300}
   .hero-sub b{color:var(--ink);font-weight:500}
+  /* hero CTA row */
+  .hero-cta{margin-top:2.3rem;display:flex;flex-wrap:wrap;gap:.9rem}
+  .btn-primary{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:#000;background:var(--amber);padding:.9rem 1.5rem;border-radius:99px;font-weight:500;transition:transform .25s,background .3s,box-shadow .3s;box-shadow:0 8px 30px rgba(255,138,61,.18)}
+  .btn-primary:hover{background:var(--ink);transform:translateY(-2px)}
+  .btn-primary .ai-dot{width:8px;height:8px;border-radius:50%;background:#000;animation:pulse 1.6s infinite}
+  .btn-ghost{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);padding:.9rem 1.5rem;border-radius:99px;border:1px solid var(--line);transition:border-color .3s,transform .25s}
+  .btn-ghost:hover{border-color:var(--amber);transform:translateY(-2px)}
   .scroll-cue{position:absolute;bottom:2.4rem;left:clamp(1.5rem,7vw,9rem);display:flex;align-items:center;gap:.8rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-dim)}
   .scroll-cue .bar{width:46px;height:1px;background:var(--ink-faint);position:relative;overflow:hidden}
   .scroll-cue .bar::after{content:"";position:absolute;inset:0;width:40%;background:var(--amber);animation:slide 2.2s infinite}
@@ -120,6 +133,10 @@
   .proj .plink{margin-top:1.3rem;display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;color:var(--ink);transition:gap .3s,color .3s}
   .proj .plink:hover{gap:.9rem;color:var(--amber)}
   .proj .plink .ar{color:var(--amber)}
+  /* highlighted CTA link inside the assistant project card */
+  .proj .plink.hot{color:#000;background:var(--amber);padding:.6rem 1.1rem;border-radius:99px;font-weight:500;align-self:flex-start}
+  .proj .plink.hot .ar{color:#000}
+  .proj .plink.hot:hover{background:var(--ink);gap:.7rem}
 
   /* timeline */
   .tl{margin-top:3rem;position:relative;padding-left:2rem}
@@ -186,6 +203,8 @@
   .form-status.err{color:#ff6b6b}
 
   footer{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:2.2rem clamp(1.5rem,7vw,9rem);border-top:1px solid var(--line);font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);flex-wrap:wrap;gap:1rem}
+  footer a{color:var(--ink-dim);transition:color .3s}
+  footer a:hover{color:var(--amber)}
   #prog{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--amber),var(--cyan));z-index:60}
 </style>
 </head>
@@ -204,12 +223,15 @@
 
 <nav>
   <div class="brand"><span class="spark">✦</span><span class="txt" id="brandTxt"></span><span class="caret"></span></div>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#contact">Contact</a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="nav-assistant" href="https://singhyeshwant.github.io/assistant/" target="_blank"><span class="ai-dot"></span>Ask my AI</a>
   </div>
 </nav>
 
@@ -224,6 +246,10 @@
     </h1>
     <div class="hero-role reveal d3">AI Project Coordinator <span>/</span> Machine Learning <span>/</span> Data Science <span>/</span> Automation</div>
     <p class="hero-sub reveal d4">I run multilingual AI data projects and build the <b>automation</b> that keeps them moving. Equal parts coordinator and engineer, I turn messy pipelines into systems that ship on time.</p>
+    <div class="hero-cta reveal d5">
+      <a class="btn-primary" href="https://singhyeshwant.github.io/assistant/" target="_blank"><span class="ai-dot"></span>Chat with my AI assistant</a>
+      <a class="btn-ghost" href="#projects">View projects ↓</a>
+    </div>
     <div class="scroll-cue"><span class="bar"></span>Scroll to explore</div>
   </section>
 
@@ -267,6 +293,13 @@
     <div class="sec-tag reveal">Selected Work</div>
     <h2 class="sec-h reveal d1">Things I have built and shipped.</h2>
     <div class="proj-grid">
+      <div class="proj feat reveal d1">
+        <div class="proj-top"><span class="ptag">Generative AI · Live</span><span class="metric">Ask anything</span></div>
+        <h3>Portfolio AI Assistant</h3>
+        <p>A conversational AI assistant embedded in this portfolio that answers visitors' questions about my work, projects, skills and experience in real time. Built on an LLM API with a secure serverless proxy (Cloudflare Worker) holding the key, a streaming token-by-token chat UI, and a guardrailed system prompt that keeps answers professional. Hosted on GitHub Pages.</p>
+        <div class="tags"><span>LLM API</span><span>Cloudflare Workers</span><span>Streaming</span><span>Prompt Engineering</span><span>JavaScript</span></div>
+        <a class="plink hot" href="https://singhyeshwant.github.io/assistant/" target="_blank"><span class="ar">→</span>Chat with my assistant</a>
+      </div>
       <div class="proj feat reveal d1">
         <div class="proj-top"><span class="ptag">Automation · Latest build</span><span class="metric">100% hands-off</span></div>
         <h3>Autonomous Job Application Engine</h3>
@@ -356,6 +389,7 @@
           <a href="mailto:2singhyeshwant@gmail.com"><span class="ar">→</span>2singhyeshwant@gmail.com</a>
           <a href="https://www.linkedin.com/in/singhyeshwant" target="_blank"><span class="ar">→</span>linkedin.com/in/singhyeshwant</a>
           <a href="tel:+61481329663"><span class="ar">→</span>+61 481 329 663</a>
+          <a href="https://singhyeshwant.github.io/assistant/" target="_blank"><span class="ar">→</span>Ask my AI assistant</a>
         </div>
         <div class="map-wrap reveal d4">
           <div class="map-label">Based in</div>
@@ -383,7 +417,7 @@
 
 <footer>
   <span>© 2025 Yeshwant Singh</span>
-  <span>AI · ML · Automation</span>
+  <span><a href="https://singhyeshwant.github.io/assistant/" target="_blank">Ask my AI ↗</a></span>
   <span>Melbourne · Australia</span>
 </footer>
 
@@ -397,14 +431,8 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-/* ╔══════════════════════════════════════════════════════════════════╗
-   ║  CONTACT FORM SETUP — paste your free Web3Forms access key below.  ║
-   ║  Get one in ~60 sec at https://web3forms.com  (enter your email,  ║
-   ║  they email you a key). Submissions then arrive in your inbox.    ║
-   ╚══════════════════════════════════════════════════════════════════╝ */
 const WEB3FORMS_KEY = 'ff53a6ab-753f-4bd7-9f20-dad781362dd0';
 
-/* ════════ animated welcome label (typewriter) ════════ */
 const brandTxt = document.getElementById('brandTxt');
 const WELCOME = 'welcome to my portfolio';
 let wi = 0;
@@ -412,14 +440,12 @@ let wi = 0;
   if(wi <= WELCOME.length){ brandTxt.textContent = WELCOME.slice(0,wi); wi++; setTimeout(typeWelcome, 70); }
 })();
 
-/* ════════ loader ════════ */
 const loadMark=document.getElementById('loadMark');
 'WELCOME PEEPS'.split('').forEach((c,i)=>{const s=document.createElement('span');s.textContent=c===' '?'\u00A0':c;s.style.animationDelay=(i*0.045)+'s';loadMark.appendChild(s);});
 let pct=0;const fill=document.getElementById('loadFill'),pctEl=document.getElementById('loadPct');
 const lt=setInterval(()=>{pct+=Math.random()*16;if(pct>=100){pct=100;clearInterval(lt);setTimeout(endLoad,450);}fill.style.width=pct+'%';pctEl.textContent=String(Math.floor(pct)).padStart(3,'0');},120);
 function endLoad(){document.getElementById('loader').classList.add('done');document.querySelectorAll('#hero .reveal').forEach(el=>el.classList.add('in'));}
 
-/* ════════ three.js neural network ════════ */
 const canvas=document.getElementById('bg');
 const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
 renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(Math.min(devicePixelRatio,2));
@@ -469,19 +495,16 @@ function animate(){
 animate();
 addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
 
-/* ════════ reveals + counters ════════ */
 const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>{if(!el.closest('#hero'))io.observe(el);});
 const cio=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){const el=en.target,target=+el.dataset.count,suf=el.dataset.suffix||'';let cur=0;const step=()=>{cur+=Math.ceil(target/45);if(cur>=target)cur=target;el.textContent=cur+suf;if(cur<target)requestAnimationFrame(step);};step();cio.unobserve(el);}});},{threshold:.6});
 document.querySelectorAll('[data-count]').forEach(c=>cio.observe(c));
 
-/* ════════ map modal ════════ */
 const MAP_SRC='https://maps.google.com/maps?q=639%20Lonsdale%20Street%2C%20Melbourne%20VIC%203000&z=16&output=embed';
 function openMap(){const m=document.getElementById('mapModal');document.getElementById('mapBig').src=MAP_SRC;m.classList.add('open');document.body.style.overflow='hidden';}
 function closeMap(){const m=document.getElementById('mapModal');m.classList.remove('open');document.body.style.overflow='';setTimeout(()=>{document.getElementById('mapBig').src='';},350);}
 addEventListener('keydown',e=>{if(e.key==='Escape')closeMap();});
 
-/* ════════ contact form → Web3Forms (real email + on-page success) ════════ */
 async function sendMail(e){
   e.preventDefault();
   const btn=document.getElementById('sendBtn');
@@ -502,7 +525,7 @@ async function sendMail(e){
     const res=await fetch('https://api.web3forms.com/submit',{
       method:'POST',
       headers:{'Content-Type':'application/json',Accept:'application/json'},
-      body:JSON.stringify({access_key:WEB3FORMS_KEY,name,email,subject,message,from_name:name,replyto:email,subject:'Portfolio · '+subject})
+      body:JSON.stringify({access_key:WEB3FORMS_KEY,name,email,message,from_name:name,replyto:email,subject:'Portfolio · '+subject})
     });
     const json=await res.json();
     if(json.success){
